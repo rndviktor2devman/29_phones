@@ -8,6 +8,7 @@ alembic = "*"
 sqlalchemy = "*"
 phonenumbers = "*"
 "psycopg2" = "*"
+"psycopg2-binary" = "*"
 
 [dev-packages]
 
