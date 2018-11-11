@@ -6,8 +6,6 @@ from sqlalchemy import exc, MetaData, Table, Column, Integer
 
 SLEEP_TIME = 10
 metadata = MetaData()
-
-
 fixed_orders = Table('fixed_orders', metadata,
                         Column('contact_phone', Integer),
                         Column('clean_number', Integer))
@@ -21,7 +19,7 @@ def convert_to_national(phonenumber, country="RU"):
             clean_number = parse(f'+7{phonenumber}', country)
         except NumberParseException:
             return None
-    return  clean_number.national_number
+    return clean_number.national_number
 
 
 def beautify_numbers():
