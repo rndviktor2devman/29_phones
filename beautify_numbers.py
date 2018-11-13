@@ -15,7 +15,7 @@ def convert_to_national(phonenumber, country="RU"):
         clean_number = parse(phonenumber, country)
     except NumberParseException:
         try:
-            clean_number = parse(f'+7{phonenumber}', country)
+            clean_number = parse('+7{}'.format(phonenumber), country)
         except NumberParseException:
             return None
     return clean_number.national_number
@@ -46,5 +46,5 @@ if __name__ == "__main__":
         try:
             beautify_numbers()
         except KeyboardInterrupt:
-            print('  Finish after keyboard interrupt')
+            print("Finish after keyboard interrupt")
             break
