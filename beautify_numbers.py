@@ -25,12 +25,12 @@ def beautify_numbers():
     connection = engine.connect()
     try:
         transaction = connection.begin()
-        target_orders = destination_session.query(fixed_orders).filter(
-            fixed_orders.c.clean_number.is_(None))
+        target_orders = destination_session.query(fixed_orders).\
+            filter(fixed_orders.c.clean_number.is_(None))
         for order in target_orders:
             clean_number = convert_to_national(order.contact_phone)
-            inserted_number = fixed_orders.update(). \
-                values(clean_number=clean_number). \
+            inserted_number = fixed_orders.update().\
+                values(clean_number=clean_number).\
                 where(fixed_orders.c.contact_phone == order.contact_phone)
             connection.execute(inserted_number)
         transaction.commit()
