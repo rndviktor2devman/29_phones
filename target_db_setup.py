@@ -10,30 +10,15 @@ destination_session = Session(engine)
 Base = declarative_base()
 
 
-class NewOrders(Base):
-    __tablename__ = 'fixed_orders'
-    orders_id = Column(Integer, primary_key=True)
-    created = Column(DateTime)
-    status = Column(String)
-    confirmed = Column(DateTime)
+class FormattedOrders(Base):
+    __tablename__ = 'formatted_orders'
+    order_id = Column(Integer, primary_key=True)
     contact_phone = Column(Unicode(255))
     clean_number = Column(Numeric(15, 0), nullable=True)
-    contact_email = Column(String)
-    contact_name = Column(String)
-    price = Column(Integer)
-    comment = Column(String)
 
-    def __init__(self, orders_id, created, status, confirmed,
-                 contact_phone, contact_email, contact_name, price, comment):
-        self.orders_id = orders_id
-        self.created = created
-        self.status = status
-        self.confirmed = confirmed
+    def __init__(self, order_id, contact_phone):
+        self.order_id = order_id
         self.contact_phone = contact_phone
-        self.contact_email = contact_email
-        self.contact_name = contact_name
-        self.price = price
-        self.comment = comment
 
 
 if __name__ == "__main__":
