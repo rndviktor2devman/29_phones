@@ -7,8 +7,8 @@ SLEEP_TIME = 10
 metadata = MetaData()
 fixed_orders = Table('formatted_orders', metadata,
                      Column('order_id', Integer),
-                     Column('contact_phone', Unicode(255)),
-                     Column('clean_number', Numeric(15, 0)))
+                     Column('contact_phone', Unicode),
+                     Column('clean_number', Numeric))
 
 
 def convert_to_national(phonenumber, country="RU"):
